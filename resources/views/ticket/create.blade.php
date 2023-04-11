@@ -23,9 +23,46 @@
             <div class="mb-3">
                 <x-input class="form-control" name="full_name" label="Full name" type="text" />
             </div>
+            
             <div class="mb-3">
-                <x-input class="form-control" name="time_of_arrival" label="Time of arrival" type="datetime-local" min="09:00:00" max="21:00:00" />
+                <div class="btn-group" name="Demands" role="group" aria-label="Basic checkbox toggle button group">
+
+                    <input type="checkbox" class="btn-check" name="Demands" id="Demands1" autocomplete="off">
+
+                    <label class="btn btn-outline-primary" for="Demands1">Checkbox 1</label>
+
+
+                    <input type="checkbox" class="btn-check" name="Demands" id="Demands2" autocomplete="off">
+
+                    <label class="btn btn-outline-primary" for="Demands2">Checkbox 2</label>
+
+
+                    <input type="checkbox" class="btn-check" name="Demands" id="Demands3" autocomplete="off">
+
+                    <label class="btn btn-outline-primary" for="Demands3">Checkbox 3</label>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <x-input class="form-control" name="time_of_arrival" label="Time of arrival" type="datetime-local"
+                    min="09:00:00" max="21:00:00" />
             </div>
             <x-submit class="btn btn-primary">Wash my car</x-submit>
+
         </form>
+        @if ($errors->any())
+
+            <div class="alert alert-danger mt-4">
+
+                <ul>
+
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+
+                </ul>
+
+            </div>
+
+        @endif
     </x-app.layout>

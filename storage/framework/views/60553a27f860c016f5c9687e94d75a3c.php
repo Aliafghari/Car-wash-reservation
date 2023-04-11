@@ -9,11 +9,13 @@
         <?php echo e($ticket->full_name); ?></p>
     <p class="text-bold text-blue-700 border p-2 m-3 rounded border-purple-400 inline-block bg-success">Time of arrival:
         <?php echo e($ticket->time_of_arrival); ?></p>
+    <p class="text-bold text-blue-700 border p-2 m-3 rounded border-purple-400 inline-block bg-success">Demands:
+<?php dd($ticket->Demands1); ?></p>
     <p class="text-bold text-blue-700 border p-2 m-3 rounded border-purple-400 inline-block bg-danger text-dark">توجه:
         لطفا شماره قبض را برای مراحل بعدی ذخیره کنید.</p>
     <?php echo e($slot); ?>
 
-
+    <?php dd($ticket); ?>
     <div class="m-3 ">
         <?php if (isset($component)) { $__componentOriginal71c6471fa76ce19017edc287b6f4508c = $component; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.link','data' => ['href' => '/ticket/'.e($ticket->id).'/edit','class' => 'btn btn-outline-info text-dark rounded-lg px-3']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>

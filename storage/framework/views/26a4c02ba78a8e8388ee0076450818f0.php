@@ -59,6 +59,26 @@
 <?php unset($__componentOriginal71c6471fa76ce19017edc287b6f4508c); ?>
 <?php endif; ?>
             </div>
+            
+            <div class="mb-3">
+                <div class="btn-group" name="Demands" role="group" aria-label="Basic checkbox toggle button group">
+
+                    <input type="checkbox" class="btn-check" name="Demands" id="Demands1" autocomplete="off">
+
+                    <label class="btn btn-outline-primary" for="Demands1">Checkbox 1</label>
+
+
+                    <input type="checkbox" class="btn-check" name="Demands" id="Demands2" autocomplete="off">
+
+                    <label class="btn btn-outline-primary" for="Demands2">Checkbox 2</label>
+
+
+                    <input type="checkbox" class="btn-check" name="Demands" id="Demands3" autocomplete="off">
+
+                    <label class="btn btn-outline-primary" for="Demands3">Checkbox 3</label>
+                </div>
+            </div>
+
             <div class="mb-3">
                 <?php if (isset($component)) { $__componentOriginal71c6471fa76ce19017edc287b6f4508c = $component; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input','data' => ['class' => 'form-control','name' => 'time_of_arrival','label' => 'Time of arrival','type' => 'datetime-local','min' => '09:00:00','max' => '21:00:00']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
@@ -90,7 +110,23 @@
 <?php $component = $__componentOriginal71c6471fa76ce19017edc287b6f4508c; ?>
 <?php unset($__componentOriginal71c6471fa76ce19017edc287b6f4508c); ?>
 <?php endif; ?>
+
         </form>
+        <?php if($errors->any()): ?>
+
+            <div class="alert alert-danger mt-4">
+
+                <ul>
+
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><?php echo e($error); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                </ul>
+
+            </div>
+
+        <?php endif; ?>
      <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal71c6471fa76ce19017edc287b6f4508c)): ?>
