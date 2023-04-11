@@ -27,19 +27,19 @@
             <div class="mb-3">
                 <div class="btn-group" name="Demands" role="group" aria-label="Basic checkbox toggle button group">
 
-                    <input type="checkbox" class="btn-check" name="Demands" id="Demands1" autocomplete="off">
+                    <input type="checkbox" class="btn-check" name="Demands[]" value="روشویی 15 دقیقه = 25000 تومان" id="Demands1" autocomplete="off">
 
-                    <label class="btn btn-outline-primary" for="Demands1">Checkbox 1</label>
-
-
-                    <input type="checkbox" class="btn-check" name="Demands" id="Demands2" autocomplete="off">
-
-                    <label class="btn btn-outline-primary" for="Demands2">Checkbox 2</label>
+                    <label class="btn btn-outline-primary" for="Demands1">روشویی 15 دقیقه = 25000 تومان</label>
 
 
-                    <input type="checkbox" class="btn-check" name="Demands" id="Demands3" autocomplete="off">
+                    <input type="checkbox" class="btn-check" name="Demands[]" value="نظافت داخل 20 دقیقه = 30000 تومان" id="Demands2" autocomplete="off">
 
-                    <label class="btn btn-outline-primary" for="Demands3">Checkbox 3</label>
+                    <label class="btn btn-outline-primary" for="Demands2">نظافت داخل 20 دقیقه = 30000 تومان</label>
+
+
+                    <input type="checkbox" class="btn-check" name="Demands[]" value="صفر شویی 60 دقیقه = 80000 هزار تومان" id="Demands3" autocomplete="off">
+
+                    <label class="btn btn-outline-primary" for="Demands3">صفر شویی 60 دقیقه = 80000 هزار تومان</label>
                 </div>
             </div>
 

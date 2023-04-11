@@ -9,30 +9,26 @@ use Faker\Core\DateTime;
 
 class TicketController extends Controller
 {
-
     public function index()
     {
         return view('ticket.index', [
             'tickets' => Ticket::all(),
         ]);
     }
-
     public function create()
     {
         return view('ticket.create', [
             'error' => session('error')
         ]);
     }
-
     public function store(Request $request)
     {
-  
         $request->validate([
             'phone' => 'required|numeric',
 
             'full_name' => 'required|string',
 
-            'Demands' => 'required',
+            'Demands' => 'required|array',
 
             'time_of_arrival' => [
 
@@ -48,6 +44,18 @@ class TicketController extends Controller
 
                     $dateTime = Carbon::createFromFormat($format, $value);
 
+                    // $reservation = Reservation::where('time_of_arrival', '>=', $dateTime->subHour())
+
+                    //     ->where('time_of_arrival', '<=', $dateTime->addHour())
+
+                    //     ->count();
+
+                    // if ($reservation >= 3) {
+
+                    //     return $fail('The ' . $attribute . ' field has already been taken 3 times within an hour of the specified time.');
+                    // }
+
+                    
                     if ($dateTime->format('H:i') < $minTime || $dateTime->format('H:i') > $maxTime) {
 
                         return $fail('The ' . $attribute . ' field must be between 9:00 and 21:00.');
@@ -65,18 +73,25 @@ class TicketController extends Controller
             ],
             // Other validation rules for other fields
         ]);
+
         $ticket = Ticket::create($request->all());
-        $ticket->demands=$request->has('Demands');
+
+
+        $selected_Demands = [];
+        foreach ($request->Demands as $Demand) {
+
+            $selected_Demands[] = $Demand;
+        }
+        $ticket->Demands = $selected_Demands;
+
+
         $ticket->ticket_number = substr(md5($ticket->id . $ticket->full_name . $ticket->phone), 0, 10);
 
         $ticket->save();
 
 
         return redirect()->route('ticket.show', [$ticket]);
- 
     }
-
-
     // public function store(Request $request)
 
     // {
@@ -128,11 +143,6 @@ class TicketController extends Controller
 
     //     return redirect()->route('ticket.show', [$ticket]);
     // }
-
-
-
-
-
     public function show(Ticket $ticket)
     {
         return view('ticket.show', [
